@@ -1,11 +1,11 @@
 /**
- * Jumple is a simple Dependency Injection Container for Javascript
+ * Jumple is a simple cross-browser/-platform Dependency Injection Container for Javascript
+ * 		Inspired by work and talks of Fabien Potencier
  *
- * Based on Pimple class (PHP) by Fabien Potencier
- *
- * @version 0.1
- * @author Nikolai Zujev <nikolai.zujev@gmail.com>
- * @license The MIT License
+ * Author: Nikolai Zujev <nikolai.zujev@gmail.com>
+ * License:  MIT License
+ * https://github.com/jaymecd/Jumple
+ * Copyright (c) 2012 Nikolai Zujev
  */
 (function() {
 	var root = this,
@@ -16,11 +16,12 @@
             return toString.call(obj) == '[object Function]';
 		};
 
+	/**
+	 * Just a simple constructor
+	 */
 	var Jumple = root.Jumple = function() {
 		this._data = {};
 	};
-
-	Jumple.version = '0.1';
 
 	/**
 	 * Avoid name conflict within a global scope
@@ -36,8 +37,8 @@
 		/**
 		 * Checks if a parameter or an object is set.
 		 *
-		 * @param String id The unique identifier
-		 * @return Boolean
+		 * @param string id The unique identifier
+		 * @return boolean
 		 */
 	    has: function(id) {
 	    	return hasOwnProperty.call(this._data, id);
@@ -46,7 +47,7 @@
 	    /**
 	     * Gets a parameter or an object.
 	     *
-	     * @param String id The unique identifier
+	     * @param string id The unique identifier
 	     * @return mixed The value of the parameter or an object
 	     * @throws Error if the identifier is not defined
 	     */
@@ -59,7 +60,7 @@
 	    /**
 	     * Gets a parameter or the closure defining an object.
 	     *
-	     * @param String id The unique identifier
+	     * @param string id The unique identifier
 	     * @return mixed The value of the parameter or a closure to defined an object
 	     * @throws Error if the identifier is not defined
 	     */
@@ -74,7 +75,7 @@
 	    /**
 	     * Sets a parameter or an object.
 	     *
-	     * @param String id The unique identifier
+	     * @param string id The unique identifier
 	     * @param mixed value The value of the parameter or a closure to defined an object
 	     * @return Jumple
 	     */
@@ -86,7 +87,7 @@
 	    /**
 	     * Unsets a parameter or an object.
 	     *
-	     * @param String id The unique identifier
+	     * @param string id The unique identifier
 	     * @return Jumple
 	     */
 	    unset: function(id) {
@@ -99,7 +100,7 @@
 	     * Returns a closure that stores the result of the given closure for
 	     * uniqueness in the scope of this instance of Pimple.
 	     *
-	     * @param String id The unique identifier
+	     * @param string id The unique identifier
 	     * @param Function callable A closure to wrap for uniqueness
 	     * @return Jumple
 	     * @throws Error if the callable is not a function
@@ -110,11 +111,11 @@
 	    	}
 
 	    	return this.set(id, function(jumple) {
-	            if (!hasOwnProperty.call(callable, '__jumple')) {
-	            	callable.__jumple = callable(jumple);
+	            if (!hasOwnProperty.call(callable, '__jumple_static')) {
+	            	callable.__jumple_static = callable(jumple);
 	            }
 
-	            return callable.__jumple;
+	            return callable.__jumple_static;
 	        });
 	    },
 
@@ -123,7 +124,7 @@
 	     *
 	     * This is useful when you want to store a callable as a parameter.
 	     *
-	     * @param String id The unique identifier
+	     * @param string id The unique identifier
 	     * @param Function callable A closure to protect from being evaluated
 	     * @return Jumple
 	     * @throws Error if the callable is not a function

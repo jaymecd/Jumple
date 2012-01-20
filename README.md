@@ -1,7 +1,7 @@
 Jumple - *very small and very useful tool*
 =====================================
 
-**Simple cross-browser/-platform Dependency Injection Container for Javascript**
+**Simple cross-browser/-platform Dependency Injection Container for Javascript**<br />
 *inspired by work and talks of Fabien Potencier*
 
 Simple Usage
@@ -74,6 +74,6 @@ Don'n forget that `get()` return result of executed closure or parameter passed 
 If you would like to raw value from Jumple, you should use `raw()` method - it return same value as you have set.
 
 
-### Jumple is free software under [MIT License](http://github.com/jaymecd/Jumple/LICENSE).
+### Jumple is free software under [MIT License](https://github.com/jaymecd/Jumple/LICENSE).
 
-*Copyright (c) 2012 Nikolai Zujev,<br />http://github.com/jaymecd/Jumple*
+*Copyright (c) 2012 Nikolai Zujev,<br />https://github.com/jaymecd/Jumple*
