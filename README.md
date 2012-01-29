@@ -4,12 +4,27 @@ Jumple - *very small and very useful tool*
 **Simple cross-browser/-platform Dependency Injection Container for Javascript**<br />
 *inspired by work and talks of Fabien Potencier*
 
+**NB!** it's only **436** bytes gzipped
+
 Simple Usage
 ------------
 
-First, create new instance on Jumple and make it easy accessible:
+First, include `Jumple.min.js` file, create new instance on Jumple and make it easy accessible:
+
+    <script type="text/javascript" src="Jumple.min.js"></script>
 
     window.injector = new Jumple(); // simple, isn't it?
+
+Also you could pass default value set:
+
+    var config = {
+        defOne: 12,
+        defTwo: function(c) {
+            // some code here
+        }
+    };
+
+    window.injector = new Jumple(config);
 
 Second, set some parameters or closures:
 

@@ -12,15 +12,28 @@
         previousJumple = root.Jumple,
         hasOwnProperty = Object.prototype.hasOwnProperty,
         toString = Object.prototype.toString,
+        isObject = function(obj) {
+            return toString.call(obj) == '[object Object]';
+        }
         isFunction = function(obj) {
             return toString.call(obj) == '[object Function]';
         };
 
     /**
      * Just a simple constructor
+     *
+     * @param object values [optional] Initial values
      */
-    var Jumple = root.Jumple = function() {
+    var Jumple = root.Jumple = function(values) {
         this._data = {};
+
+        if (values && isObject(values)) {
+            for (var key in values) {
+                if (hasOwnProperty.call(values, key)) {
+                    this.set(key, values[key]);
+                }
+            }
+        }
     };
 
     /**
