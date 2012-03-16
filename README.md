@@ -4,7 +4,7 @@ Jumple - *very small and very useful tool*
 **Simple cross-browser/-platform Dependency Injection Container for Javascript**<br />
 *inspired by work and talks of Fabien Potencier*
 
-**NB!** it's only **436** bytes gzipped
+**NB!** it's only **520** bytes gzipped
 
 Simple Usage
 ------------
@@ -87,6 +87,8 @@ There is no difference between a parameter and an object, so you could use the `
 Don'n forget that `get()` return result of executed closure or parameter passed to `set()` method.
 
 If you would like to raw value from Jumple, you should use `raw()` method - it return same value as you have set.
+
+For testing purpose, to list all available values in container use `debug()` method, which will dump everything into console.
 
 
 **Jumple is free software under [MIT License](https://raw.github.com/jaymecd/Jumple/master/LICENSE).**
